@@ -23,7 +23,7 @@ def q_learning_step(Q, state, action, reward, next_state, alpha, gamma):
     Q[state, action] += alpha * (reward + gamma * np.max(Q[next_state, :]) - Q[state, action])
 
 # Initialize Q-table
-num_states = 10
+num_states = 100
 num_actions = 2
 Q = np.zeros((num_states, num_actions))
 
@@ -35,7 +35,7 @@ alpha = 0.1  # learning rate
 gamma = 0.9  # discount factor
 
 # Define the number of episodes and steps per episode
-num_episodes = 1000
+num_episodes = 10000
 max_steps = 100
 
 # Run Q-learning
@@ -94,7 +94,7 @@ y_target = np.array([step_function(xi) for xi in x])
 
 plt.plot(x, y_target, label='Target Trajectory')
 plt.plot(x, y_learned, label='Learned Function')
-plt.xlabel('Input')
+plt.xlabel('X')
 plt.ylabel('Output')
 plt.title('Learned Function vs Target Trajectory')
 plt.legend()
